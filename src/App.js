@@ -15,8 +15,8 @@ const App = () => {
 	const [speedY, setSpeedY] = useState(0);
 
 	const getPos = (gyrData) => {
-		const a = speedX + gyrData.y * 100 + 1
-		const b = speedY + gyrData.x * 100 + 1
+		const a = speedX + gyrData.y * 100 + 10
+		const b = speedY + gyrData.x * 100
 		setSpeedX(a)
 		setSpeedY(b)
 		return [a, b]
@@ -24,12 +24,13 @@ const App = () => {
 
 	useEffect(() => {
 		bridge.subscribe(({ detail: { type, data }}) => {
+			console.log(type)
 			if (type === 'VKWebAppUpdateConfig') {
 				const schemeAttribute = document.createAttribute('scheme');
 				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
 				document.body.attributes.setNamedItem(schemeAttribute);
 			} else if (type === 'VKWebAppGyroscopeChanged') {
-				setGyr(data)
+				setGyr({x:data.x, y:data.y, z:data.z})
 				let p = getPos(data)
 				setPos(p)
 			}
@@ -42,12 +43,12 @@ const App = () => {
 		}
 		async function fakeGyr() {
 			setInterval(() => {
-				// console.log(1)
-				setPos({x:1, y:1})
-			}, 100)
+				setPos(getPos({x:speedX, y:speedY}))
+			}, 30)
 		}
+
 		fetchData();
-		// fakeGyr();
+		fakeGyr();
 	}, []);
 
 	const go = e => {

@@ -60,7 +60,13 @@ const Home = ({id, go, fetchedUser, pos, gyrData}) => {
         if (y === undefined || isNaN(y)) {
             y = MAP_HEIGHT / 2
         }
-        console.log(x + " " + y)
+        if (dx === undefined || isNaN(dx)) {
+            dx = 0
+        }
+        if (dy === undefined || isNaN(dy)) {
+            dy = 0
+        }
+
         if (isValid(x + dx, y))
             x += dx
         else
@@ -69,7 +75,7 @@ const Home = ({id, go, fetchedUser, pos, gyrData}) => {
             y += dy
         else
             y -= dy
-        console.log(dx + " " + dy)
+
         setX(x)
         setY(y)
     }
@@ -122,7 +128,7 @@ const Home = ({id, go, fetchedUser, pos, gyrData}) => {
                 width:USER_WIDTH, height:USER_HEIGHT,
                 left: X, top: Y,
                 backgroundColor: "#000000"}}/>
-            <Div>6</Div>
+            <Div>7</Div>
             <Div style={{marginTop:"auto", marginBottom:"0"}}>
                 x={gyrData.x}
             </Div>
