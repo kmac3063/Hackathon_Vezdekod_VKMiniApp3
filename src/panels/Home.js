@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import {Panel, PanelHeader, Header, Button, Group, Cell, Div, Avatar} from '@vkontakte/vkui';
 
 const Home = ({id, go, fetchedUser, pos, gyrData}) => {
-    const [X, setX] = useState(0)
-    const [Y, setY] = useState(0)
-    const [dX, setdX] = useState(0)
-    const [dY, setdY] = useState(0)
-    const [d, setD] = useState({a:0, b:0, c:0})
 
     const N = 16
     const CELL_WIDTH = 20
@@ -18,6 +13,12 @@ const Home = ({id, go, fetchedUser, pos, gyrData}) => {
 
     const MAP_WIDTH = N * CELL_WIDTH
     const MAP_HEIGHT = N * CELL_HEIGHT
+
+    const [X, setX] = useState(MAP_WIDTH / 2)
+    const [Y, setY] = useState(MAP_HEIGHT / 2)
+    const [dX, setdX] = useState(0)
+    const [dY, setdY] = useState(0)
+    const [d, setD] = useState({a:0, b:0, c:0})
 
     useEffect(()=>{
         // console.log(2)
@@ -38,7 +39,7 @@ const Home = ({id, go, fetchedUser, pos, gyrData}) => {
         // y = y - CELL_HEIGHT
         let a = [x, y]
         let b = [x + USER_WIDTH, y]
-        let c = [x, y + CELL_HEIGHT]
+        let c = [x, y + USER_HEIGHT]
         let d = [x + USER_WIDTH, y + USER_HEIGHT]
 
 
@@ -54,10 +55,10 @@ const Home = ({id, go, fetchedUser, pos, gyrData}) => {
         let x = X
         let y = Y
         if (x === undefined || isNaN(x)) {
-            x = 0
+            x = MAP_WIDTH / 2
         }
         if (y === undefined || isNaN(y)) {
-            y = 0
+            y = MAP_HEIGHT / 2
         }
         console.log(x + " " + y)
         if (isValid(x + dx, y))
@@ -68,7 +69,7 @@ const Home = ({id, go, fetchedUser, pos, gyrData}) => {
             y += dy
         else
             y -= dy
-        // console.log(dx + " " + dy)
+        console.log(dx + " " + dy)
         setX(x)
         setY(y)
     }
@@ -95,7 +96,7 @@ const Home = ({id, go, fetchedUser, pos, gyrData}) => {
         let wls = []
         for (let i = 0; i < N; i++) {
             for (let j = 0; j < N; j++) {
-                if (m[i][j] === '1')
+                if (m[i][j] === '0')
                     wls.push([j * CELL_WIDTH, i * CELL_HEIGHT])
             }
         }
@@ -121,7 +122,7 @@ const Home = ({id, go, fetchedUser, pos, gyrData}) => {
                 width:USER_WIDTH, height:USER_HEIGHT,
                 left: X, top: Y,
                 backgroundColor: "#000000"}}/>
-            <Div>1</Div>
+            <Div>6</Div>
             <Div style={{marginTop:"auto", marginBottom:"0"}}>
                 x={gyrData.x}
             </Div>

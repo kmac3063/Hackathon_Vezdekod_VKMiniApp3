@@ -11,9 +11,15 @@ const App = () => {
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 	const [pos, setPos] = useState([0, 0])
 	const [gyr, setGyr] = useState({x:0,y:0,z:0})
+	const [speedX, setSpeedX] = useState(0);
+	const [speedY, setSpeedY] = useState(0);
 
 	const getPos = (gyrData) => {
-		return [1, 1]
+		const a = speedX + gyrData.y * 100 + 1
+		const b = speedY + gyrData.x * 100 + 1
+		setSpeedX(a)
+		setSpeedY(b)
+		return [a, b]
 	}
 
 	useEffect(() => {
@@ -23,13 +29,13 @@ const App = () => {
 				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
 				document.body.attributes.setNamedItem(schemeAttribute);
 			} else if (type === 'VKWebAppGyroscopeChanged') {
-				// setGyr(data)
-				// let p = getPos(data)
-				// setPos(p)
+				setGyr(data)
+				let p = getPos(data)
+				setPos(p)
 			}
 		});
 		async function fetchData() {
-			bridge.send("VKWebAppGyroscopeStart", {"refresh_rate": 1000});
+			bridge.send("VKWebAppGyroscopeStart", {"refresh_rate": 20});
 			setPopout(null);
 			const user = await bridge.send('VKWebAppGetUserInfo');
 			setUser(user);
@@ -41,7 +47,7 @@ const App = () => {
 			}, 100)
 		}
 		fetchData();
-		fakeGyr();
+		// fakeGyr();
 	}, []);
 
 	const go = e => {
