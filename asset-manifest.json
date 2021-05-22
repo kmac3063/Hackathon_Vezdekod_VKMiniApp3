@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/Hackathon_Vezdekod_VKMiniApp3/static/js/main.5980e440.chunk.js",
+    "main.js.map": "/Hackathon_Vezdekod_VKMiniApp3/static/js/main.5980e440.chunk.js.map",
+    "runtime-main.js": "/Hackathon_Vezdekod_VKMiniApp3/static/js/runtime-main.01863e32.js",
+    "runtime-main.js.map": "/Hackathon_Vezdekod_VKMiniApp3/static/js/runtime-main.01863e32.js.map",
+    "static/css/2.a2ab3232.chunk.css": "/Hackathon_Vezdekod_VKMiniApp3/static/css/2.a2ab3232.chunk.css",
+    "static/js/2.2b15cec9.chunk.js": "/Hackathon_Vezdekod_VKMiniApp3/static/js/2.2b15cec9.chunk.js",
+    "static/js/2.2b15cec9.chunk.js.map": "/Hackathon_Vezdekod_VKMiniApp3/static/js/2.2b15cec9.chunk.js.map",
+    "index.html": "/Hackathon_Vezdekod_VKMiniApp3/index.html",
+    "static/css/2.a2ab3232.chunk.css.map": "/Hackathon_Vezdekod_VKMiniApp3/static/css/2.a2ab3232.chunk.css.map",
+    "static/js/2.2b15cec9.chunk.js.LICENSE.txt": "/Hackathon_Vezdekod_VKMiniApp3/static/js/2.2b15cec9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.01863e32.js",
+    "static/css/2.a2ab3232.chunk.css",
+    "static/js/2.2b15cec9.chunk.js",
+    "static/js/main.5980e440.chunk.js"
+  ]
+}
