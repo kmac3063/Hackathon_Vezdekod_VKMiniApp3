@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/Hackathon_Vezdekod_VKMiniApp3/static/js/main.6318e35f.chunk.js",
-    "main.js.map": "/Hackathon_Vezdekod_VKMiniApp3/static/js/main.6318e35f.chunk.js.map",
+    "main.js": "/Hackathon_Vezdekod_VKMiniApp3/static/js/main.d430f8bd.chunk.js",
+    "main.js.map": "/Hackathon_Vezdekod_VKMiniApp3/static/js/main.d430f8bd.chunk.js.map",
     "runtime-main.js": "/Hackathon_Vezdekod_VKMiniApp3/static/js/runtime-main.01863e32.js",
     "runtime-main.js.map": "/Hackathon_Vezdekod_VKMiniApp3/static/js/runtime-main.01863e32.js.map",
     "static/css/2.3ca3203c.chunk.css": "/Hackathon_Vezdekod_VKMiniApp3/static/css/2.3ca3203c.chunk.css",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.01863e32.js",
     "static/css/2.3ca3203c.chunk.css",
     "static/js/2.e4358286.chunk.js",
-    "static/js/main.6318e35f.chunk.js"
+    "static/js/main.d430f8bd.chunk.js"
   ]
 }
