@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui';
 
-import persik from '../img/persik.png';
+import persik from '../../img/persik.png';
 import './Persik.css';
 
 const Persik = props => (

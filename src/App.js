@@ -4,12 +4,17 @@ import { View, ScreenSpinner, AdaptivityProvider, AppRoot } from '@vkontakte/vku
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+	const [pos, setPos] = useState([0, 0])
+	const [gyr, setGyr] = useState({x:0,y:0,z:0})
+
+	const getPos = (gyrData) => {
+		return [1, 1]
+	}
 
 	useEffect(() => {
 		bridge.subscribe(({ detail: { type, data }}) => {
@@ -17,14 +22,26 @@ const App = () => {
 				const schemeAttribute = document.createAttribute('scheme');
 				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
 				document.body.attributes.setNamedItem(schemeAttribute);
+			} else if (type === 'VKWebAppGyroscopeChanged') {
+				// setGyr(data)
+				// let p = getPos(data)
+				// setPos(p)
 			}
 		});
 		async function fetchData() {
+			bridge.send("VKWebAppGyroscopeStart", {"refresh_rate": 1000});
+			setPopout(null);
 			const user = await bridge.send('VKWebAppGetUserInfo');
 			setUser(user);
-			setPopout(null);
+		}
+		async function fakeGyr() {
+			setInterval(() => {
+				// console.log(1)
+				setPos({x:1, y:1})
+			}, 100)
 		}
 		fetchData();
+		fakeGyr();
 	}, []);
 
 	const go = e => {
@@ -35,8 +52,7 @@ const App = () => {
 		<AdaptivityProvider>
 			<AppRoot>
 				<View activePanel={activePanel} popout={popout}>
-					<Home id='home' fetchedUser={fetchedUser} go={go} />
-					<Persik id='persik' go={go} />
+					<Home id='home' fetchedUser={fetchedUser} go={go} pos={pos} gyrData={gyr}/>
 				</View>
 			</AppRoot>
 		</AdaptivityProvider>
